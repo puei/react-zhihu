@@ -8,9 +8,14 @@ export default function useSwitch(){
         onChange:setOpen
     })
     
+    function toggle() {
+        setOpen(!open)
+    }
+
     return {
         open,
         setOpen,
         bind,
+        toggle,
     }
 }

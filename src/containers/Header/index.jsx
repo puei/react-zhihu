@@ -1,17 +1,20 @@
 import { css } from '@emotion/react'
 import { size } from 'polished'
+import { RiContrastLine } from 'react-icons/ri'
 import SvgLogo from '../../components/svgs/SvgLogo'
 import SvgMess from '../../components/svgs/SvgMess'
 import SvgNotification from '../../components/svgs/SvgNotification'
 import SvgSearch from '../../components/svgs/SvgSearch'
-import { THEME } from '../../constants/theme'
+import { useDarkMode, useTheme } from '../../contexts/ThemeContext'
 import { navigation } from '../Header/constants'
 
 function Header() {
+    const { theme } = useTheme()
+	const { toggle } = useDarkMode()
     return (
     <div className='Header' css={css`
-        box-shadow : ${THEME.boxShadow.card};
-        background-color:${THEME.colors.white[100]};
+        box-shadow : ${theme.boxShadow.card};
+        background-color:${theme.colors.white[100]};
     `}>
         <div className="wrap" css={css`
             display:flex;
@@ -33,7 +36,7 @@ function Header() {
         <nav className='navigation' css={css`
             display:flex;
             align-self:normal;
-            color:${THEME.colors.hint};
+            color:${theme.colors.hint};
             a{
                 display:flex;
                 align-items:center;
@@ -44,8 +47,8 @@ function Header() {
             }
             a.active{
                 font-weight:bold;
-                color:${THEME.colors.black[100]};
-                box-shadow:0 -3px 0 ${THEME.colors.primary} inset;
+                color:${theme.colors.black[100]};
+                box-shadow:0 -3px 0 ${theme.colors.primary} inset;
             }
         `}>
             <a className='active' href="#33" >样式测试</a>
@@ -63,26 +66,26 @@ function Header() {
                 flex:1;
                 margin:12px;
                 padding:8px 16px;
-                border:1px solid ${THEME.colors.black[10]};
+                border:1px solid ${theme.colors.black[10]};
                 border-radius:100px;
                 font-size:14px;
-                background-color:${THEME.colors.white[10]};
+                background-color:${theme.colors.white[10]};
             }
             input:focus{
-                color:${THEME.colors.primary};
+                color:${theme.colors.primary};
             }
         `}>
             <input className='input' type="text" placeholder='搜索答案' />
             <SvgSearch size={15} css={css`
                 margin:0 30px 0 -40px;
-                color:${THEME.colors.primary};
+                color:${theme.colors.primary};
             `} />
             <button type='button' css={css`
                 padding:8px 20px;
                 border: none;
                 outline: none;
-                background-color:${THEME.colors.primary};
-                color:${THEME.colors.white[100]};
+                background-color:${theme.colors.primary};
+                color:${theme.colors.white[100]};
                 border-radius:100px;
             `}>提问</button>
         </div>
@@ -91,7 +94,7 @@ function Header() {
             align-items:center;
             flex:0.4;
             justify-content:flex-end;
-            color:${THEME.colors.hint};
+            color:${theme.colors.hint};
             &>*{
                 margin:0 12px;
             }
@@ -105,6 +108,9 @@ function Header() {
                 border-radius:6px;
             }
         `}>
+            <button className='theme' onClick={toggle}>
+                <RiContrastLine size={22} />
+            </button>
             <div className="notification">
                 <SvgNotification/>
             </div>

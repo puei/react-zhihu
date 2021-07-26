@@ -13,7 +13,7 @@ const fakeLable = [
 ]
 
 function HomePage({title}) {
-    const [selectedVal,setSelctedVal] = useState(fakeLable[0].label)
+    const [setSelctedVal] = useState(fakeLable[0].label)
 
     return (
         <Page className="HomePage">

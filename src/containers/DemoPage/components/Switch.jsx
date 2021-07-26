@@ -11,7 +11,7 @@ function Switch({
         ...props}){
     let [toggle,setToggle] = useState(defaultOpen)
 
-    if((open && defaultOpen) !== undefined){
+    if(open !== undefined && defaultOpen !== undefined){
         return new Error('open and defaultOpen can not be used at sametime');
     }
 
@@ -40,8 +40,8 @@ function Switch({
             onClick={handleClick}
             {...props}
         >
-            <div className="circle" css={
-                [
+            <div className="circle"
+                css={[
                     css`
                         ${pSize(size)};
                         border-radius:100px;
@@ -50,8 +50,8 @@ function Switch({
                     !toggle && css`
                         transform:translate(${size}px);
                         background-color:${desaturate(.4,'slateblue')};`,
-                ]
-                } />
+                ]}
+            />
         </div>
     )
 }
